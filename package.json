@@ -1,9 +1,9 @@
 {
-  "name": "comp125-m2020-lesson6",
+  "name": "comp125-m2020-Assignment3",
   "version": "1.0.0",
-  "description": "Demo Project for COMP125 Lesson 6",
+  "description": "Mini Portfolio – JSON Data & AJAX Components",
   "main": "index.js",
-  "author": "Tom Tsiliopoulos",
+  "author": "Thiago L Batista",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
