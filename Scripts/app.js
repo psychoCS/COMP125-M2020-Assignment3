@@ -3,6 +3,7 @@
 // IIFE -Immediately Ivoked Function Expression
 (function () {
 
+    /*
     // New Code
     function setPageContent(id) {
         document.title = id;
@@ -158,10 +159,32 @@
             }
         });
     }
-
+    */
     // Old Code
 
-    function addTextTotext() {
+    function HeaderLoader() {
+        // console control message
+        console.info("Loading Header...");
+
+        // create the Header Loader object
+        let HRL = new XMLHttpRequest();
+
+        // Gets everything from the header file 
+        HRL.open("GET", "./Views/partials/header.html")
+
+        // Send everything inside of it to... 
+        HRL.send();
+
+        HRL.addEventListener("readystatechange", function () {
+            if ((HRL.readyState === 4) && (HRL.status === 200)) {
+                let header = document.getElementsByTagName("header")[0];
+                let headerData = HRL.responseText;
+                header.innerHTML = headerData;
+            }
+        });
+    }
+
+    function IntroText() {
         // Let's get the element on the page
         let text = document.getElementsByClassName("text")[0];
 
@@ -293,8 +316,6 @@
                 }
             });
 
-
-
             // creates a "hook" or reference to the button element with an id of "submitButton"
             let submitButton = document.getElementById("submitButton");
 
@@ -306,17 +327,23 @@
         return false;
     }
 
-
-    // named function
+    // Start the functions and Console check then
     function Start() {
         console.log('%cApp Started...', "color:white; font-size: 24px;");
 
-        let success = addTextTotext();
-
-        if (success) {
-            console.log("successfully added paragraphs to text");
+        let headerSuccess = HeaderLoader();
+        if (headerSuccess) {
+            console.log("Header added");
         } else {
-            console.warn("content not added to text- does not exist");
+            console.warn("Where is the header?");
+        }
+
+        let introSuccess = IntroText();
+
+        if (introSuccess) {
+            console.log("successfully added the introduction paragraph");
+        } else {
+            console.warn("introduction not added");
         }
 
         let success1 = addTextTotext1();
