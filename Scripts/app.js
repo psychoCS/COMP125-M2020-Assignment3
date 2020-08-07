@@ -1,98 +1,20 @@
+/*
+
+Name: app.js
+Author: Thiago Batista
+Student Number: 301110966
+Description: Assignment 3
+Program: COMP125 M2020
+Date: 07 / 08 / 2020
+Website: Thiago `s Portfolio
+File Description: Simple css file with all the codes for my first portfolio page.
+
+*/
+
 "use strict";
 
 // IIFE -Immediately Ivoked Function Expression
 (function () {
-
-    /*
-
-           function AboutContent() {
-            console.info("About Content Loading...");
-            // step 1 - creates the XHR object
-            let XHR = new XMLHttpRequest();
-            // step 2 - configures the message
-            XHR.open("GET", "./Views/content/about.html");
-            // step 3 - Executes the request
-            XHR.send();
-            XHR.addEventListener("readystatechange", function () {
-                if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                    let main = document.getElementsByTagName("main")[0];
-                    let mainData = XHR.responseText;
-                    main.innerHTML = mainData;
-                }
-            });
-        }
-
-        function ContactContent() {
-            console.info("Contact Content Loading...");
-            // step 1 - creates the XHR object
-            let XHR = new XMLHttpRequest();
-            // step 2 - configures the message
-            XHR.open("GET", "./Views/content/contact.html");
-            // step 3 - Executes the request
-            XHR.send();
-            XHR.addEventListener("readystatechange", function () {
-                if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                    let main = document.getElementsByTagName("main")[0];
-                    let mainData = XHR.responseText;
-                    main.innerHTML = mainData;
-                    validateForm();
-                }
-            });
-        }
-
-        function HomeContent() {
-            console.info("Home Content Loading...");
-            // step 1 - creates the XHR object
-            let XHR = new XMLHttpRequest();
-            // step 2 - configures the message
-            XHR.open("GET", "/Views/content/home.html");
-            // step 3 - Executes the request
-            XHR.send();
-            XHR.addEventListener("readystatechange", function () {
-                if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                    let main = document.getElementsByTagName("main")[0];
-                    let mainData = XHR.responseText;
-                    main.innerHTML = mainData;
-                }
-            });
-        }
-
-        function ProductsContent() {
-            console.info("Products Content Loading...");
-            // step 1 - creates the XHR object
-            let XHR = new XMLHttpRequest();
-            // step 2 - configures the message
-            XHR.open("GET", "./Views/content/products.html");
-            // step 3 - Executes the request
-            XHR.send();
-            XHR.addEventListener("readystatechange", function () {
-                if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                    let main = document.getElementsByTagName("main")[0];
-                    let mainData = XHR.responseText;
-                    main.innerHTML = mainData;
-                    loadAddressBookData();
-                }
-            });
-        }
-
-        function ServicesContent() {
-            console.info("Services Content Loading...");
-            // step 1 - creates the XHR object
-            let XHR = new XMLHttpRequest();
-            // step 2 - configures the message
-            XHR.open("GET", "./Views/content/services.html");
-            // step 3 - Executes the request
-            XHR.send();
-            XHR.addEventListener("readystatechange", function () {
-                if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                    let main = document.getElementsByTagName("main")[0];
-                    let mainData = XHR.responseText;
-                    main.innerHTML = mainData;
-                }
-            });
-        }
-        */
-    // Old Code
 
     function HeaderLoader() {
         // console control message
