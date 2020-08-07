@@ -4,162 +4,94 @@
 (function () {
 
     /*
-    // New Code
-    function setPageContent(id) {
-        document.title = id;
-        window.history.pushState("", id, "/" + id.toLowerCase());
-        highlightActiveLink(id);
-        // content switcher
-        switch (id) {
-            case "Home":
-                HomeContent();
-                break;
-            case "Contact":
-                ContactContent();
-                break;
-            case "Products":
-                ProductsContent();
-                break;
-            case "Services":
-                ServicesContent();
-                break;
-            case "About":
-                AboutContent();
-                break;
-        }
-        loadFooter();
-    }
 
-    function InitializeSite() {
-        console.info("Header Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "./Views/partials/header.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let header = document.getElementsByTagName("header")[0];
-                let headerData = XHR.responseText;
-                header.innerHTML = headerData;
-                setPageContent("Home");
-                let navLinks = document.getElementsByTagName("a");
-                for (const link of navLinks) {
-                    link.addEventListener("click", (event) => {
-                        event.preventDefault();
-                        let id = link.getAttribute("id");
-                        setPageContent(id);
-                    });
+           function AboutContent() {
+            console.info("About Content Loading...");
+            // step 1 - creates the XHR object
+            let XHR = new XMLHttpRequest();
+            // step 2 - configures the message
+            XHR.open("GET", "./Views/content/about.html");
+            // step 3 - Executes the request
+            XHR.send();
+            XHR.addEventListener("readystatechange", function () {
+                if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                    let main = document.getElementsByTagName("main")[0];
+                    let mainData = XHR.responseText;
+                    main.innerHTML = mainData;
                 }
-            }
-        });
-    }
+            });
+        }
 
-    function loadFooter() {
-        console.info("Footer Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "./Views/partials/footer.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let footer = document.getElementsByTagName("footer")[0];
-                let footerData = XHR.responseText;
-                footer.innerHTML = footerData;
-            }
-        });
-    }
+        function ContactContent() {
+            console.info("Contact Content Loading...");
+            // step 1 - creates the XHR object
+            let XHR = new XMLHttpRequest();
+            // step 2 - configures the message
+            XHR.open("GET", "./Views/content/contact.html");
+            // step 3 - Executes the request
+            XHR.send();
+            XHR.addEventListener("readystatechange", function () {
+                if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                    let main = document.getElementsByTagName("main")[0];
+                    let mainData = XHR.responseText;
+                    main.innerHTML = mainData;
+                    validateForm();
+                }
+            });
+        }
 
-    function AboutContent() {
-        console.info("About Content Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "./Views/content/about.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let main = document.getElementsByTagName("main")[0];
-                let mainData = XHR.responseText;
-                main.innerHTML = mainData;
-            }
-        });
-    }
+        function HomeContent() {
+            console.info("Home Content Loading...");
+            // step 1 - creates the XHR object
+            let XHR = new XMLHttpRequest();
+            // step 2 - configures the message
+            XHR.open("GET", "/Views/content/home.html");
+            // step 3 - Executes the request
+            XHR.send();
+            XHR.addEventListener("readystatechange", function () {
+                if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                    let main = document.getElementsByTagName("main")[0];
+                    let mainData = XHR.responseText;
+                    main.innerHTML = mainData;
+                }
+            });
+        }
 
-    function ContactContent() {
-        console.info("Contact Content Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "./Views/content/contact.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let main = document.getElementsByTagName("main")[0];
-                let mainData = XHR.responseText;
-                main.innerHTML = mainData;
-                validateForm();
-            }
-        });
-    }
+        function ProductsContent() {
+            console.info("Products Content Loading...");
+            // step 1 - creates the XHR object
+            let XHR = new XMLHttpRequest();
+            // step 2 - configures the message
+            XHR.open("GET", "./Views/content/products.html");
+            // step 3 - Executes the request
+            XHR.send();
+            XHR.addEventListener("readystatechange", function () {
+                if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                    let main = document.getElementsByTagName("main")[0];
+                    let mainData = XHR.responseText;
+                    main.innerHTML = mainData;
+                    loadAddressBookData();
+                }
+            });
+        }
 
-    function HomeContent() {
-        console.info("Home Content Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "/Views/content/home.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let main = document.getElementsByTagName("main")[0];
-                let mainData = XHR.responseText;
-                main.innerHTML = mainData;
-            }
-        });
-    }
-
-    function ProductsContent() {
-        console.info("Products Content Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "./Views/content/products.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let main = document.getElementsByTagName("main")[0];
-                let mainData = XHR.responseText;
-                main.innerHTML = mainData;
-                loadAddressBookData();
-            }
-        });
-    }
-
-    function ServicesContent() {
-        console.info("Services Content Loading...");
-        // step 1 - creates the XHR object
-        let XHR = new XMLHttpRequest();
-        // step 2 - configures the message
-        XHR.open("GET", "./Views/content/services.html");
-        // step 3 - Executes the request
-        XHR.send();
-        XHR.addEventListener("readystatechange", function () {
-            if ((XHR.readyState === 4) && (XHR.status === 200)) {
-                let main = document.getElementsByTagName("main")[0];
-                let mainData = XHR.responseText;
-                main.innerHTML = mainData;
-            }
-        });
-    }
-    */
+        function ServicesContent() {
+            console.info("Services Content Loading...");
+            // step 1 - creates the XHR object
+            let XHR = new XMLHttpRequest();
+            // step 2 - configures the message
+            XHR.open("GET", "./Views/content/services.html");
+            // step 3 - Executes the request
+            XHR.send();
+            XHR.addEventListener("readystatechange", function () {
+                if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                    let main = document.getElementsByTagName("main")[0];
+                    let mainData = XHR.responseText;
+                    main.innerHTML = mainData;
+                }
+            });
+        }
+        */
     // Old Code
 
     function HeaderLoader() {
@@ -175,7 +107,7 @@
         // Send everything inside of it to... 
         HRL.send();
 
-        // All from the header.html codes will be injected on the "current" page that have the header tag as soon as it opens.
+        // ... here. So all the codes from the header.html will be injected on the "current" page that have the header tag as soon as it opens.
         HRL.addEventListener("readystatechange", function () {
             if ((HRL.readyState === 4) && (HRL.status === 200)) {
                 let header = document.getElementsByTagName("header")[0];
@@ -189,16 +121,16 @@
         // console control message
         console.log("Footer added");
 
-        // create the Header Loader object
+        // create the footer Loader object
         let FTL = new XMLHttpRequest();
 
-        // Gets everything from the header file 
+        // Gets everything from the footer file 
         FTL.open("GET", "./Views/partials/footer.html")
 
         // Send everything inside of it to... 
         FTL.send();
 
-        // All from the header.html codes will be injected on the "current" page that have the header tag as soon as it opens.
+        // ... here. So all the codes from the header.html will be injected on the "current" page that have the footer tag as soon as it opens.
         FTL.addEventListener("readystatechange", function () {
             if ((FTL.readyState === 4) && (FTL.status === 200)) {
                 let footer = document.getElementsByTagName("footer")[0];
@@ -242,10 +174,12 @@
         return false;
     }
 
-    function addTextTotext1() {
-        let text1 = document.getElementsByClassName("text1")[0];
+    function projectsTextA() {
+        console.log("successfully added project A paragraph");
 
-        if (text1) {
+        let intro = document.getElementsByClassName("text1")[0];
+
+        if (intro) {
 
             let newDiv1 = document.createElement("div");
 
@@ -258,14 +192,16 @@
      
                 `;
 
-            text1.appendChild(newDiv1);
+            intro.appendChild(newDiv1);
 
             return true;
         }
         return false;
     }
 
-    function addTextTotext2() {
+    function projectsTextB() {
+        console.log("successfully added project B paragraph");
+
         let text2 = document.getElementsByClassName("text2")[0];
 
         if (text2) {
@@ -288,7 +224,9 @@
         return false;
     }
 
-    function addTextTotext3() {
+    function projectsTextC() {
+        console.log("successfully added project C paragraph");
+
         let text3 = document.getElementsByClassName("text3")[0];
 
         if (text3) {
@@ -353,47 +291,23 @@
         return false;
     }
 
-    // Start the functions and Console check then
+    // Start the functions
     function Start() {
         console.log('%cApp Started...', "color:white; font-size: 24px;");
 
-        let headerSuccess = HeaderLoader();
+        HeaderLoader();
 
-        let introSuccess = IntroText();
+        IntroText();
 
-        let success1 = addTextTotext1();
+        projectsTextA();
 
-        if (success1) {
-            console.log("successfully added paragraphs to text");
-        } else {
-            console.warn("content not added to text- does not exist");
-        }
+        projectsTextB();
 
-        let success2 = addTextTotext2();
+        projectsTextC();
 
-        if (success2) {
-            console.log("successfully added paragraphs to text");
-        } else {
-            console.warn("content not added to text- does not exist");
-        }
+        validateForm();
 
-        let success3 = addTextTotext3();
-
-        if (success3) {
-            console.log("successfully added paragraphs to text");
-        } else {
-            console.warn("content not added to text- does not exist");
-        }
-
-        let formValidated = validateForm();
-        if (formValidated) {
-            console.log("successfully validated form");
-        } else {
-            console.warn("form not validated - does not exist");
-        }
-
-        let footerSuccess = FooterLoader();
-
+        FooterLoader();
     }
 
     window.addEventListener("load", Start);
