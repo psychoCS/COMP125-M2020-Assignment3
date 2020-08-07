@@ -175,6 +175,7 @@
         // Send everything inside of it to... 
         HRL.send();
 
+        // All from the header.html codes will be injected on the "current" page that have the header tag as soon as it opens.
         HRL.addEventListener("readystatechange", function () {
             if ((HRL.readyState === 4) && (HRL.status === 200)) {
                 let header = document.getElementsByTagName("header")[0];
@@ -184,7 +185,32 @@
         });
     }
 
+    function FooterLoader() {
+        // console control message
+        console.log("Footer added");
+
+        // create the Header Loader object
+        let FTL = new XMLHttpRequest();
+
+        // Gets everything from the header file 
+        FTL.open("GET", "./Views/partials/footer.html")
+
+        // Send everything inside of it to... 
+        FTL.send();
+
+        // All from the header.html codes will be injected on the "current" page that have the header tag as soon as it opens.
+        FTL.addEventListener("readystatechange", function () {
+            if ((FTL.readyState === 4) && (FTL.status === 200)) {
+                let footer = document.getElementsByTagName("footer")[0];
+                let footerData = FTL.responseText;
+                footer.innerHTML = footerData;
+            }
+        });
+    }
+
     function IntroText() {
+        console.log("successfully added the introduction paragraph");
+
         // Let's get the element on the page
         let text = document.getElementsByClassName("text")[0];
 
@@ -204,7 +230,7 @@
                 <p> Marvel Maniac (Comics, Games, Movies) </p>
                 <p> Love games that get you new experiences </p>
                 <p> My main goal is to turn all this chaos in codes</p>
-                <p> Do let's go throught the portal "Alice" </p>
+                <p> Do let's go through the portal "Alice" </p>
 
                 `;
 
@@ -332,19 +358,8 @@
         console.log('%cApp Started...', "color:white; font-size: 24px;");
 
         let headerSuccess = HeaderLoader();
-        if (headerSuccess) {
-            console.log("Header added");
-        } else {
-            console.warn("Where is the header?");
-        }
 
         let introSuccess = IntroText();
-
-        if (introSuccess) {
-            console.log("successfully added the introduction paragraph");
-        } else {
-            console.warn("introduction not added");
-        }
 
         let success1 = addTextTotext1();
 
@@ -376,6 +391,8 @@
         } else {
             console.warn("form not validated - does not exist");
         }
+
+        let footerSuccess = FooterLoader();
 
     }
 
