@@ -3,6 +3,164 @@
 // IIFE -Immediately Ivoked Function Expression
 (function () {
 
+    // New Code
+    function setPageContent(id) {
+        document.title = id;
+        window.history.pushState("", id, "/" + id.toLowerCase());
+        highlightActiveLink(id);
+        // content switcher
+        switch (id) {
+            case "Home":
+                HomeContent();
+                break;
+            case "Contact":
+                ContactContent();
+                break;
+            case "Products":
+                ProductsContent();
+                break;
+            case "Services":
+                ServicesContent();
+                break;
+            case "About":
+                AboutContent();
+                break;
+        }
+        loadFooter();
+    }
+
+    function InitializeSite() {
+        console.info("Header Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/partials/header.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let header = document.getElementsByTagName("header")[0];
+                let headerData = XHR.responseText;
+                header.innerHTML = headerData;
+                setPageContent("Home");
+                let navLinks = document.getElementsByTagName("a");
+                for (const link of navLinks) {
+                    link.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        let id = link.getAttribute("id");
+                        setPageContent(id);
+                    });
+                }
+            }
+        });
+    }
+
+    function loadFooter() {
+        console.info("Footer Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/partials/footer.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let footer = document.getElementsByTagName("footer")[0];
+                let footerData = XHR.responseText;
+                footer.innerHTML = footerData;
+            }
+        });
+    }
+
+    function AboutContent() {
+        console.info("About Content Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/about.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let main = document.getElementsByTagName("main")[0];
+                let mainData = XHR.responseText;
+                main.innerHTML = mainData;
+            }
+        });
+    }
+
+    function ContactContent() {
+        console.info("Contact Content Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/contact.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let main = document.getElementsByTagName("main")[0];
+                let mainData = XHR.responseText;
+                main.innerHTML = mainData;
+                validateForm();
+            }
+        });
+    }
+
+    function HomeContent() {
+        console.info("Home Content Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "/Views/content/home.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let main = document.getElementsByTagName("main")[0];
+                let mainData = XHR.responseText;
+                main.innerHTML = mainData;
+            }
+        });
+    }
+
+    function ProductsContent() {
+        console.info("Products Content Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/products.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let main = document.getElementsByTagName("main")[0];
+                let mainData = XHR.responseText;
+                main.innerHTML = mainData;
+                loadAddressBookData();
+            }
+        });
+    }
+
+    function ServicesContent() {
+        console.info("Services Content Loading...");
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/services.html");
+        // step 3 - Executes the request
+        XHR.send();
+        XHR.addEventListener("readystatechange", function () {
+            if ((XHR.readyState === 4) && (XHR.status === 200)) {
+                let main = document.getElementsByTagName("main")[0];
+                let mainData = XHR.responseText;
+                main.innerHTML = mainData;
+            }
+        });
+    }
+
+    // Old Code
+
     function addTextTotext() {
         // Let's get the element on the page
         let text = document.getElementsByClassName("text")[0];
@@ -203,5 +361,4 @@ $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
-
 });
