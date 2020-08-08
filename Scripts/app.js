@@ -39,9 +39,6 @@ File Description: Simple css file with all the codes for my first portfolio page
         });
     }
 
-
-
-
     function Paragraphs() {
         console.info("Paragraphs Loading...");
 
@@ -60,11 +57,14 @@ File Description: Simple css file with all the codes for my first portfolio page
 
                 let paragraph = JSON.parse(PAR.responseText);
                 var paragraphArray = paragraph.Paragraphs;
-
-                document.getElementsByClassName("text")[0].innerHTML = paragraphArray[0].Introduction;
-                document.getElementsByClassName("text1")[0].innerHTML = paragraphArray[1].Introduction;
-                document.getElementsByClassName("text2")[0].innerHTML = paragraphArray[0].SecondProject;
-                document.getElementsByClassName("text3")[0].innerHTML = paragraphArray[0].SecondProject;
+                let variable = document.getElementsByClassName("text")[0];
+                if (variable = document.getElementsByClassName("text")[0]) {
+                    document.getElementsByClassName("text")[0].innerHTML = paragraphArray[0].Introduction;
+                } else if (variable = document.getElementsByClassName("text1")[0]) {
+                    document.getElementsByClassName("text1")[0].innerHTML = paragraphArray[0].FirstProject;
+                    document.getElementsByClassName("text2")[0].innerHTML = paragraphArray[0].SecondProject;
+                    document.getElementsByClassName("text3")[0].innerHTML = paragraphArray[0].ThirdProject;
+                }
             }
         });
     }
@@ -255,13 +255,13 @@ File Description: Simple css file with all the codes for my first portfolio page
 
         Paragraphs()
 
-        // IntroText();
+        /* IntroText();
 
-        projectsTextA();
+        // projectsTextA();
 
         projectsTextB();
 
-        projectsTextC();
+        projectsTextC();*/
 
         validateForm();
 
