@@ -16,56 +16,57 @@ File Description: Simple css file with all the codes for my first portfolio page
 // IIFE -Immediately Ivoked Function Expression
 (function () {
 
-        function HeaderLoader() {
-            // console control message
-            console.info("Loading Header...");
+    function HeaderLoader() {
+        // console control message
+        console.info("Loading Header...");
 
-            // create the Header Loader object
-            let HRL = new XMLHttpRequest();
+        // create the Header Loader object
+        let HRL = new XMLHttpRequest();
 
-            // Gets everything from the header file 
-            HRL.open("GET", "./Views/partials/header.html")
+        // Gets everything from the header file 
+        HRL.open("GET", "./Views/partials/header.html")
 
-            // Send everything inside of it to... 
-            HRL.send();
+        // Send everything inside of it to... 
+        HRL.send();
 
-            // ... here. So all the codes from the header.html will be injected on the "current" page that have the header tag as soon as it opens.
-            HRL.addEventListener("readystatechange", function () {
-                if ((HRL.readyState === 4) && (HRL.status === 200)) {
-                    let header = document.getElementsByTagName("header")[0];
-                    let headerData = HRL.responseText;
-                    header.innerHTML = headerData;
-                }
-            });
-        }
+        // ... here. So all the codes from the header.html will be injected on the "current" page that have the header tag as soon as it opens.
+        HRL.addEventListener("readystatechange", function () {
+            if ((HRL.readyState === 4) && (HRL.status === 200)) {
+                let header = document.getElementsByTagName("header")[0];
+                let headerData = HRL.responseText;
+                header.innerHTML = headerData;
+            }
+        });
+    }
 
-        function Paragraphs() {
-            console.info("Paragraphs Loading...");
 
-            // step 1 - creates the XHR object
-            let PAR = new XMLHttpRequest();
 
-            // step 2 - configures the message
-            PAR.open("GET", "Scripts/paragraphs.json");
 
-            // step 3 - Executes the request
-            PAR.send();
+    function Paragraphs() {
+        console.info("Paragraphs Loading...");
 
-            // step 4 - register the readystate event 
-            PAR.addEventListener("readystatechange", function () {
-                    //if ((PAR.readyState === 4) && (PAR.status === 200)) {
-                    // Cut the paragraphs in chunks loaded for each page 
-                    //let myObj = JSON.parse(Paragraphs);
-                    //document.getElementsByClassName("text")[0].innerHTML = myObj.Introduction;
-                    var out = "";
-                    var i;
-                    for (i = 0; i < arr.length; i++) {
-                        out += '<a href="' + arr[i].url + '">' +
-                            arr[i].display + '</a><br>';
-                    }
-                    document.getElementsByClassName("text")[0].innerHTML = out;
-                }
-            });
+        // step 1 - creates the XHR object
+        let PAR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        PAR.open("GET", "Scripts/paragraphs.json");
+
+        // step 3 - Executes the request
+        PAR.send();
+
+        // step 4 - register the readystate event 
+        PAR.addEventListener("readystatechange", function () {
+            if ((PAR.readyState === 4) && (PAR.status === 200)) {
+
+                let paragraph = JSON.parse(PAR.responseText);
+                var paragraphArray = paragraph.Paragraphs;
+
+                document.getElementsByClassName("text")[0].innerHTML = paragraphArray[0].Introduction;
+                document.getElementsByClassName("text1")[0].innerHTML = paragraphArray[1].Introduction;
+                document.getElementsByClassName("text2")[0].innerHTML = paragraphArray[0].SecondProject;
+                document.getElementsByClassName("text3")[0].innerHTML = paragraphArray[0].SecondProject;
+            }
+        });
     }
 
     function FooterLoader() {
@@ -124,7 +125,7 @@ File Description: Simple css file with all the codes for my first portfolio page
             }
             return false;
         }
-        */
+        
 
     function projectsTextA() {
         console.log("successfully added project A paragraph");
@@ -201,6 +202,7 @@ File Description: Simple css file with all the codes for my first portfolio page
         }
         return false;
     }
+    */
 
     function validateForm() {
         let contactUsForm = document.forms[0];

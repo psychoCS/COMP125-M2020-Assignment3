@@ -1,8 +1,13 @@
 {
     "Paragraphs": [{
-        "Introduction": "Its really tricky to talk about yourself. But I will try to keep as simples as possible.Brazilian, born in 82, together with my soul mate since 2011, living in Canada with her since 2019, Marvel maniac(Comics, Games, Movies), love games that get you new experiences, my main goal is to turn all this chaos in codes.Do lets go through the portal Alice",
-        "FirstProject": "CINECOM. Here is where I push myself and learn new tricks about",
-        "SecondProject": "CODICTS. I just love to see now new ideas on coding using java or css and for me Codicts is one of the best",
-        "ThirdProject": "Two Minute Papers. I just love A.I., thats something that I really want to work with, and this channel show me crazy stuff"
-    }]
+            "Introduction": "<p>Its really tricky to talk about yourself. But I will try to keep as simples as possible.</p><p>Brazilian, born in 82, together with my soul mate since 2011</p><p>Living in Canada with her since 2019</p><p>Marvel maniac(Comics, Games, Movies)</p><p>love games that get you new experiences</p><p>my main goal is to turn all this chaos in codes</p><p>Do lets go through the portal Alice</p>",
+            "FirstProject": "CINECOM. Here is where I push myself and learn new tricks about"
+        },
+        {
+            "SecondProject": "CODICTS. I just love to see now new ideas on coding using java or css and for me Codicts is one of the best"
+        },
+        {
+            "ThirdProject": "Two Minute Papers. I just love A.I., thats something that I really want to work with, and this channel show me crazy stuff"
+        }
+    ]
 }
