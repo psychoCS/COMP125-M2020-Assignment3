@@ -1,13 +1,8 @@
 {
-    "introParagraph": [{
-                "It 's really tricky to talk about yourself But I will
-                try to keep as simples as possible ",
-                Brazilian,
-                Born in 82,
-                Together with my soul mate since 2011,
-                Living in Canada with her since 2019,
-                Marvel Maniac(Comics, Games, Movies),
-                Love games that get you new experiences,
-                My main goal is to turn all this chaos in codes < /p> <
-                p > Do
-                let 's go through the portal "Alice" </p>},]
+    "Paragraphs": [{
+        "Introduction": "Its really tricky to talk about yourself. But I will try to keep as simples as possible.Brazilian, born in 82, together with my soul mate since 2011, living in Canada with her since 2019, Marvel maniac(Comics, Games, Movies), love games that get you new experiences, my main goal is to turn all this chaos in codes.Do lets go through the portal Alice",
+        "FirstProject": "CINECOM. Here is where I push myself and learn new tricks about",
+        "SecondProject": "CODICTS. I just love to see now new ideas on coding using java or css and for me Codicts is one of the best",
+        "ThirdProject": "Two Minute Papers. I just love A.I., thats something that I really want to work with, and this channel show me crazy stuff"
+    }]
+}

@@ -16,27 +16,56 @@ File Description: Simple css file with all the codes for my first portfolio page
 // IIFE -Immediately Ivoked Function Expression
 (function () {
 
-    function HeaderLoader() {
-        // console control message
-        console.info("Loading Header...");
+        function HeaderLoader() {
+            // console control message
+            console.info("Loading Header...");
 
-        // create the Header Loader object
-        let HRL = new XMLHttpRequest();
+            // create the Header Loader object
+            let HRL = new XMLHttpRequest();
 
-        // Gets everything from the header file 
-        HRL.open("GET", "./Views/partials/header.html")
+            // Gets everything from the header file 
+            HRL.open("GET", "./Views/partials/header.html")
 
-        // Send everything inside of it to... 
-        HRL.send();
+            // Send everything inside of it to... 
+            HRL.send();
 
-        // ... here. So all the codes from the header.html will be injected on the "current" page that have the header tag as soon as it opens.
-        HRL.addEventListener("readystatechange", function () {
-            if ((HRL.readyState === 4) && (HRL.status === 200)) {
-                let header = document.getElementsByTagName("header")[0];
-                let headerData = HRL.responseText;
-                header.innerHTML = headerData;
-            }
-        });
+            // ... here. So all the codes from the header.html will be injected on the "current" page that have the header tag as soon as it opens.
+            HRL.addEventListener("readystatechange", function () {
+                if ((HRL.readyState === 4) && (HRL.status === 200)) {
+                    let header = document.getElementsByTagName("header")[0];
+                    let headerData = HRL.responseText;
+                    header.innerHTML = headerData;
+                }
+            });
+        }
+
+        function Paragraphs() {
+            console.info("Paragraphs Loading...");
+
+            // step 1 - creates the XHR object
+            let PAR = new XMLHttpRequest();
+
+            // step 2 - configures the message
+            PAR.open("GET", "Scripts/paragraphs.json");
+
+            // step 3 - Executes the request
+            PAR.send();
+
+            // step 4 - register the readystate event 
+            PAR.addEventListener("readystatechange", function () {
+                    //if ((PAR.readyState === 4) && (PAR.status === 200)) {
+                    // Cut the paragraphs in chunks loaded for each page 
+                    //let myObj = JSON.parse(Paragraphs);
+                    //document.getElementsByClassName("text")[0].innerHTML = myObj.Introduction;
+                    var out = "";
+                    var i;
+                    for (i = 0; i < arr.length; i++) {
+                        out += '<a href="' + arr[i].url + '">' +
+                            arr[i].display + '</a><br>';
+                    }
+                    document.getElementsByClassName("text")[0].innerHTML = out;
+                }
+            });
     }
 
     function FooterLoader() {
@@ -61,40 +90,41 @@ File Description: Simple css file with all the codes for my first portfolio page
             }
         });
     }
+    /*
+        function IntroText() {
+            console.log("successfully added the introduction paragraph");
 
-    function IntroText() {
-        console.log("successfully added the introduction paragraph");
+            // Let's get the element on the page
+            let text = document.getElementsByClassName("text")[0];
 
-        // Let's get the element on the page
-        let text = document.getElementsByClassName("text")[0];
+            if (text) {
+                // Then lets create a new div element
 
-        if (text) {
-            // Then lets create a new div element
+                let newDiv = document.createElement("div");
 
-            let newDiv = document.createElement("div");
+                // Configure
+                newDiv.innerHTML =
+                    `
+                    <p> It's really tricky to talk about yourself </p>
+                    <p> But I will try to keep as simples as possible</p>              
+                    <p> Brazilian, Born in 82 </p>
+                    <p> Together with my soul mate since 2011 </p>                
+                    <p> Living in Canada with her since 2019 </p>
+                    <p> Marvel Maniac (Comics, Games, Movies) </p>
+                    <p> Love games that get you new experiences </p>
+                    <p> My main goal is to turn all this chaos in codes</p>
+                    <p> Do let's go through the portal "Alice" </p>
 
-            // Configure
-            newDiv.innerHTML =
-                `
-                <p> It's really tricky to talk about yourself </p>
-                <p> But I will try to keep as simples as possible</p>              
-                <p> Brazilian, Born in 82 </p>
-                <p> Together with my soul mate since 2011 </p>                
-                <p> Living in Canada with her since 2019 </p>
-                <p> Marvel Maniac (Comics, Games, Movies) </p>
-                <p> Love games that get you new experiences </p>
-                <p> My main goal is to turn all this chaos in codes</p>
-                <p> Do let's go through the portal "Alice" </p>
+                    `;
 
-                `;
+                // step 4 attach the new element
+                text.appendChild(newDiv);
 
-            // step 4 attach the new element
-            text.appendChild(newDiv);
-
-            return true;
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
+        */
 
     function projectsTextA() {
         console.log("successfully added project A paragraph");
@@ -219,7 +249,11 @@ File Description: Simple css file with all the codes for my first portfolio page
 
         HeaderLoader();
 
-        IntroText();
+        FooterLoader();
+
+        Paragraphs()
+
+        // IntroText();
 
         projectsTextA();
 
@@ -229,7 +263,7 @@ File Description: Simple css file with all the codes for my first portfolio page
 
         validateForm();
 
-        FooterLoader();
+
     }
 
     window.addEventListener("load", Start);
